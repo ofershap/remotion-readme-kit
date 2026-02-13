@@ -1,6 +1,11 @@
 # remotion-readme-kit
 
-Drop-in [Remotion](https://www.remotion.dev/) templates for creating animated README demos. Clone, customize props, render GIF.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Remotion](https://img.shields.io/badge/Built_with-Remotion-6C47FF.svg)](https://www.remotion.dev/)
+
+Create animated GIF demos for your README in minutes — not hours. Clone, edit props, render. No video editing skills needed.
+
+Drop-in [Remotion](https://www.remotion.dev/) templates for creating animated README demos.
 
 3 templates cover most open source project types:
 
