@@ -1,7 +1,4 @@
 node_modules/
 dist/
 out/
-*.mp4
-# Ignore rendered GIFs except examples
-*.gif
-!examples/*.gif
+*.tsbuildinfo

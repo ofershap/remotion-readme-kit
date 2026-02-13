@@ -1,29 +1,19 @@
 {
   "name": "remotion-readme-kit",
-  "version": "1.0.0",
-  "description": "Drop-in Remotion templates for creating animated README demos",
-  "private": true,
-  "scripts": {
-    "dev": "remotion studio",
-    "render": "tsx render.ts",
-    "build": "tsc --noEmit"
-  },
-  "keywords": [
-    "remotion",
-    "readme",
-    "gif",
-    "animation",
-    "demo",
-    "open-source",
-    "cli",
-    "before-after",
-    "showcase"
-  ],
-  "author": "Ofer Shapira <ofer@ofershap.dev>",
+  "version": "0.1.0",
+  "description": "Remotion templates for creating animated README demos. 3 templates: CLI demo, code before/after, feature showcase.",
+  "keywords": ["remotion", "readme", "gif", "animation", "demo", "cli", "open-source"],
+  "author": "Ofer Shapira",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ofershap/remotion-readme-kit.git"
+    "url": "git+https://github.com/ofershap/remotion-readme-kit.git"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "tsx render.ts",
+    "build": "tsc --noEmit",
+    "render:all": "tsx render.ts --id CliDemo && tsx render.ts --id CodeBeforeAfter && tsx render.ts --id FeatureShowcase"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.0",
