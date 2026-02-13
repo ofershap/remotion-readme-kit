@@ -26,19 +26,135 @@ npm run render -- --id CliDemo   # Render to out/CliDemo.gif
 
 Simulates a terminal with typed commands and output lines. Supports colored output, configurable typing speed, and custom prompt symbols.
 
-**Props:** `title`, `lines[]` (type + text + color), `typingSpeed` (1-10), `promptSymbol`
+![CliDemo example](examples/cli-demo.gif)
+
+**Props:**
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `title` | `string` | Terminal window title |
+| `lines` | `{ type, text, color? }[]` | Lines to display — `"command"` (typed), `"output"` (faded in), or `"blank"` |
+| `typingSpeed` | `number` (1-10) | How fast commands are typed. Default: `2` |
+| `promptSymbol` | `string` | Prompt character. Default: `"$"` |
+
+**Example composition:**
+
+```tsx
+<Composition
+  id="MyCliTool"
+  component={CliDemo}
+  schema={CliDemoSchema}
+  calculateMetadata={calculateCliDemoMetadata}
+  {...DIMENSIONS}
+  fps={FPS}
+  durationInFrames={300}
+  defaultProps={{
+    title: "my-cli-tool",
+    lines: [
+      { type: "command", text: "npx my-cli-tool init" },
+      { type: "output", text: "Creating project..." },
+      { type: "output", text: "Installing dependencies..." },
+      { type: "blank", text: "" },
+      { type: "output", text: "Done! Your project is ready.", color: "#a6e3a1" },
+    ],
+    typingSpeed: 2,
+    promptSymbol: "$",
+  }}
+/>
+```
 
 ### CodeBeforeAfter
 
-Split-screen code comparison with animated transitions. Shows "before" code, then slides in "after" code side-by-side.
+Split-screen code comparison with animated transitions. Shows "before" code centered, then slides it left and reveals "after" code side-by-side.
 
-**Props:** `title`, `beforeLabel`, `afterLabel`, `beforeCode`, `afterCode`
+![CodeBeforeAfter example](examples/code-before-after.gif)
+
+**Props:**
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `title` | `string` | Title shown before the code panels appear |
+| `beforeLabel` | `string` | Label above the left panel. Default: `"Before"` |
+| `afterLabel` | `string` | Label above the right panel. Default: `"After"` |
+| `beforeCode` | `string` | Code for the left panel |
+| `afterCode` | `string` | Code for the right panel |
+
+**Example composition:**
+
+```tsx
+<Composition
+  id="MyLibrary"
+  component={CodeBeforeAfter}
+  schema={CodeBeforeAfterSchema}
+  {...DIMENSIONS}
+  fps={FPS}
+  durationInFrames={BA_FRAMES}
+  defaultProps={{
+    title: "Simpler. Typed. Better.",
+    beforeLabel: "Before",
+    afterLabel: "After",
+    beforeCode: `import EventEmitter from "events";
+
+const emitter = new EventEmitter();
+
+emitter.on("data", (val) => {
+  // val is \`any\` — no type safety
+  console.log(val.name);
+});`,
+    afterCode: `import { createEmitter } from "my-library";
+
+type Events = { data: { name: string } };
+
+const emitter = createEmitter<Events>();
+
+emitter.on("data", (val) => {
+  // val is { name: string } — fully typed!
+  console.log(val.name);
+});`,
+  }}
+/>
+```
 
 ### FeatureShowcase
 
-Animated feature cards with staggered spring entrance. Shows project name, tagline, then reveals features one by one.
+Animated feature cards with staggered spring entrance. Shows project name and tagline, then reveals feature cards one by one. Automatically switches to 2-column layout when there are more than 4 features.
 
-**Props:** `projectName`, `tagline`, `features[]` (emoji + title + description, 1-8), `accentColor`
+![FeatureShowcase example](examples/feature-showcase.gif)
+
+**Props:**
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `projectName` | `string` | Project name displayed as the heading |
+| `tagline` | `string` | Subtitle below the project name |
+| `features` | `{ emoji, title, description }[]` | Feature cards (1-8) |
+| `accentColor` | `string` | Hex color for heading and card borders |
+
+**Example composition:**
+
+```tsx
+<Composition
+  id="MyProject"
+  component={FeatureShowcase}
+  schema={FeatureShowcaseSchema}
+  calculateMetadata={calculateFeatureShowcaseMetadata}
+  {...DIMENSIONS}
+  fps={FPS}
+  durationInFrames={180}
+  defaultProps={{
+    projectName: "my-project",
+    tagline: "17 developer utilities. Zero auth. One MCP server.",
+    features: [
+      { emoji: "🔐", title: "Base64 & Hash", description: "Encode, decode, MD5, SHA-256" },
+      { emoji: "🎲", title: "UUID & ULID", description: "Generate unique identifiers" },
+      { emoji: "🔓", title: "JWT Decode", description: "Parse headers and payloads" },
+      { emoji: "⏰", title: "Cron & Timestamps", description: "Explain cron, convert timestamps" },
+      { emoji: "📋", title: "JSON & Regex", description: "Format, validate, test patterns" },
+    ],
+    accentColor: "#94e2d5",
+  }}
+/>
+```
 
 ## Rendering
 
@@ -68,25 +184,6 @@ All compositions use Zod schemas for prop validation. See `src/templates/*.schem
 | mauve | `#cba6f7` | AI features |
 | teal | `#94e2d5` | Dev tools |
 | peach | `#fab387` | Infrastructure |
-
-## Real-World Examples
-
-This kit was used to create demo GIFs for 12 open source projects:
-
-- [ts-nano-event](https://github.com/ofershap/ts-nano-event) (CodeBeforeAfter)
-- [env-guard](https://github.com/ofershap/env-guard) (CliDemo)
-- [hebrew-slugify](https://github.com/ofershap/hebrew-slugify) (CliDemo)
-- [use-stepper](https://github.com/ofershap/use-stepper) (CodeBeforeAfter)
-- [hebrew-dates](https://github.com/ofershap/hebrew-dates) (CodeBeforeAfter)
-- [react-rtl-utils](https://github.com/ofershap/react-rtl-utils) (CodeBeforeAfter)
-- [mcp-server-devutils](https://github.com/ofershap/mcp-server-devutils) (FeatureShowcase)
-- [mcp-server-cloudflare](https://github.com/ofershap/mcp-server-cloudflare) (FeatureShowcase)
-- [mcp-server-npm](https://github.com/ofershap/mcp-server-npm) (CliDemo)
-- [mcp-server-github-gist](https://github.com/ofershap/mcp-server-github-gist) (FeatureShowcase)
-- [ai-commit-msg](https://github.com/ofershap/ai-commit-msg) (FeatureShowcase)
-- [awesome-hebrew-dev](https://github.com/ofershap/awesome-hebrew-dev) (FeatureShowcase)
-
-All 12 compositions are included in `src/Root.tsx` as reference examples.
 
 ## License
 
