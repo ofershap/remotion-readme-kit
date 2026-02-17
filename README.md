@@ -190,6 +190,13 @@ All compositions use Zod schemas for prop validation. See `src/templates/*.schem
 | teal | `#94e2d5` | Dev tools |
 | peach | `#fab387` | Infrastructure |
 
+## Author
+
+**Ofer Shapira**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/ofershap)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat&logo=github&logoColor=white)](https://github.com/ofershap)
+
 ## License
 
 MIT
