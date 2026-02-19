@@ -1,11 +1,11 @@
-# remotion-readme-kit
+# Remotion README Kit — Animated GIF Demos for Your README
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Remotion](https://img.shields.io/badge/Built_with-Remotion-6C47FF.svg)](https://www.remotion.dev/)
 
-Create animated GIF demos for your README in minutes — not hours. Clone, edit props, render. No video editing skills needed.
+Create animated GIF demos for your GitHub README in minutes — not hours. Clone, edit props, render. No video editing skills needed.
 
-Drop-in [Remotion](https://www.remotion.dev/) templates for creating animated README demos.
+Drop-in [Remotion](https://www.remotion.dev/) templates for creating animated README demos — terminal recordings, before/after code comparisons, and feature showcases.
 
 3 templates cover most open source project types:
 
@@ -31,7 +31,7 @@ npm run render -- --id CliDemo   # Render to out/CliDemo.gif
 
 Simulates a terminal with typed commands and output lines. Supports colored output, configurable typing speed, and custom prompt symbols.
 
-![CliDemo example](examples/cli-demo.gif)
+![Remotion CliDemo template — animated terminal with typing effect](examples/cli-demo.gif)
 
 **Props:**
 
@@ -72,7 +72,7 @@ Simulates a terminal with typed commands and output lines. Supports colored outp
 
 Split-screen code comparison with animated transitions. Shows "before" code centered, then slides it left and reveals "after" code side-by-side.
 
-![CodeBeforeAfter example](examples/code-before-after.gif)
+![Remotion CodeBeforeAfter template — split-screen code comparison animation](examples/code-before-after.gif)
 
 **Props:**
 
@@ -124,7 +124,7 @@ emitter.on("data", (val) => {
 
 Animated feature cards with staggered spring entrance. Shows project name and tagline, then reveals feature cards one by one. Automatically switches to 2-column layout when there are more than 4 features.
 
-![FeatureShowcase example](examples/feature-showcase.gif)
+![Remotion FeatureShowcase template — animated feature cards with staggered entrance](examples/feature-showcase.gif)
 
 **Props:**
 
